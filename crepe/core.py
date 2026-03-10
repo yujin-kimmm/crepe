@@ -358,7 +358,7 @@ def process_file(file, output=None, model_capacity='full', viterbi=False,
             image = np.pad(image, [(0, 20), (0, 0), (0, 0)], mode='constant')
             image[-20:-10, :, :] = inferno(confidence)[np.newaxis, :, :]
             image[-10:, :, :] = (
-                inferno((confidence > 0.5).astype(np.float))[np.newaxis, :, :])
+                inferno((confidence > 0.5).astype(np.float32))[np.newaxis, :, :])
 
         imwrite(plot_file, (255 * image).astype(np.uint8))
         if verbose:
